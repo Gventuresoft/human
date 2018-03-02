@@ -1,0 +1,125 @@
+#%RAML 0.8
+title: Human
+version: 2
+baseUri: https://api.notificationscloud.com/v1
+
+securitySchemes:
+  - JWT:
+      type: Basic Authentication
+      describedBy:
+        headers:
+          Authorization:
+            description: JWT authentication
+            type: string
+        responses:
+          401:
+            description: Missing authorization header or it has expired
+            body:
+              application/json:
+                schema: |
+                  {
+                    "type": "object",
+                    "description": "A response message",
+                    "properties": {
+                      "message": { "type": "string" }
+                    },
+                    "required": [ "message" ]
+                  }
+                example: |
+                  {
+                    "message": "Missing authorization header or it has expired"
+                  }
+
+/notif:
+  /save:
+    /schedule:
+      post:
+        description: Sends a notification to a user or group of users. In order to send a notification to all subscribed users, only include the "notification" object with the info you want. In order to send a notification to the users of a company, also include the "filter" object with the tag named "company" and the value as the company. In order to send a notification to a list of users, include the "filter" object with tag named "username" and the user list as the value. Note, the users are specified by the following convention, "company:user", e.g. "askinforma:18". Check below examples for all 3 scenarios (all users, company, user list)
+        securedBy: [JWT]
+        body: 
+          application/json:
+            example: |
+              {
+                "notification": {
+                  "title": "This will be the notification title",
+                  "body": "This will be the notification body",
+                  "payload": {
+                    "url": "login/loginMobile.xhtml"
+                  }
+                }
+              }
+              
+              {
+                "notification": {
+                  "title": "This will be the notification title",
+                  "body": "This will be the notification body",
+                  "payload": {
+                    "url": "login/loginMobile.xhtml"
+                  }
+                },
+                "filter": {
+                  "tags": [
+                    {
+                      "name": "company",
+                      "type": "string",
+                      "operator": "eq",
+                      "value": "askinforma"
+                    }
+                  ]
+                }
+              }
+              
+              {
+                "notification": {
+                  "title": "This will be the notification title",
+                  "body": "This will be the notification body",
+                  "payload": {
+                    "url": "login/loginMobile.xhtml"
+                  }
+                },
+                "filter": {
+                  "tags": [
+                    {
+                      "name": "username",
+                      "type": "list",
+                      "operator": "in",
+                      "value": ["askinforma:18", "askinforma:20"]
+                    }
+                  ]
+                }
+              }
+        responses:
+          201:
+            description: OK
+            body:
+              application/json:
+                schema: |
+                  {
+                    "type": "object",
+                    "description": "A response message",
+                    "properties": {
+                      "message": { "type": "string" }
+                    },
+                    "required": [ "message" ]
+                  }
+                example: |
+                  {
+                    "message": "OK"
+                  }
+          500:
+            description: Internal error
+            body:
+              application/json:
+                schema: |
+                  {
+                    "type": "object",
+                    "description": "A response message",
+                    "properties": {
+                      "message": { "type": "string" }
+                    },
+                    "required": [ "message" ]
+                  }
+                example: |
+                  {
+                    "message": "There was a problem sending the notification"
+                  }

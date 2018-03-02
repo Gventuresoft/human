@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.airtouchmedia.humaneland" version="1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="AppPreferences">
+        <param name="android-package" value="me.apla.cordova.AppPreferences" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <feature name="PushNotification">
+        <param name="android-package" value="com.adobe.phonegap.push.PushPlugin" />
+    </feature>
+    <name>Human WS</name>
+    <description>
+		Human WS
+	</description>
+    <author email="devs@airtouchmedia.com" href="https://www.airtouchmedia.com">
+		Airtouch New Media
+	</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <allow-navigation href="*://200.53.142.183:9998/*" />
+    <allow-navigation href="*://humaneland.net/*" />
+    <allow-navigation href="*://api.notificationscloud.com/*" />
+    <allow-intent href="market:*" />
+    <icon density="mdpi" src="res/android/icon/48.png" />
+    <icon density="hdpi" src="res/android/icon/72.png" />
+    <icon density="xhdpi" src="res/android/icon/96.png" />
+    <icon density="xxhdpi" src="res/android/icon/144.png" />
+    <icon density="xxxhdpi" src="res/android/icon/192.png" />
+    <splash density="port-hdpi" src="res/android/splash/Splash Screen Android Large negro2.png" />
+    <splash density="port-ldpi" src="res/android/splash/Splash Screen Android Small negro2.png" />
+    <splash density="port-mdpi" src="res/android/splash/Splash Screen Android Medium negro2.png" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashShowOnlyFirstTime" value="false" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="disallowoverscroll" value="true" />
+    <preference name="target-device" value="handset" />
+    <preference name="Orientation" value="default" />
+</widget>
